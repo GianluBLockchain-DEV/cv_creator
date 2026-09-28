@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Builder Europeo - Omnia Solida</title>
+<style>
+:root {
+    --primary: #1a365d;
+    --accent: #8B7355;
+    --teal: #5F9EA0;
+    --light-gray: #f7fafc;
+    --border: #e2e8f0;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #f7fafc 0%, #eef2f5 100%);
+    padding:40px 20px;
+}
+
+.header-top {
+    max-width:1000px;
+    margin:0 auto 40px;
+    background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+    padding: 30px;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-container {
+    flex-shrink: 0;
+}
+
+.logo {
+    max-height: 70px;
+    max-width: 140px;
+    object-fit: contain;
+}
+
+.header-text h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.header-text p {
+    font-size: 14px;
+    opacity: 0.95;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.header-text .service-desc {
+    font-size: 13px;
+    opacity: 0.85;
+    color: #e2e8f0;
+    font-style: italic;
+}
+
+.toolbar{
+    max-width:1000px;
+    margin:0 auto 20px;
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+button{
+    background: var(--teal);
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #4a8a8c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(95, 158, 160, 0.3);
+}
+
+#photoInput {
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: white;
+}
+
+.cv{
+    max-width:1000px;
+    margin:auto;
+    background:white;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+    min-height:1200px;
+}
+
+.header{
+    display:flex;
+    background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+    color:white;
+    padding:30px;
+}
+
+.photo{
+    width:150px;
+    height:180px;
+    border:3px solid white;
+    overflow:hidden;
+    background:#ddd;
+    border-radius: 4px;
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.header-info{
+    margin-left:30px;
+    flex:1;
+    color:white;
+}
+
+.name{
+    font-size:36px;
+    font-weight:bold;
+    margin-bottom:10px;
+    color:white;
+}
+
+.role{
+    font-size:16px;
+    color:white;
+    margin-bottom: 8px;
+}
+
+.content{
+    display:grid;
+    grid-template-columns:300px 1fr;
+}
+
+.sidebar{
+    background: linear-gradient(180deg, #f5f7fa 0%, #eef2f5 100%);
+    padding:30px;
+    border-right: 2px solid var(--border);
+}
+
+.main{
+    padding:30px;
+}
+
+.section{
+    margin-bottom:30px;
+}
+
+.section h2{
+    color: var(--primary);
+    margin-bottom:15px;
+    border-bottom:2px solid var(--teal);
+    padding-bottom:8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.editable{
+    min-height:25px;
+    outline:none;
+    border: 1px dashed transparent;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.editable:hover {
+    border-color: var(--teal);
+    background: rgba(95, 158, 160, 0.05);
+}
+
+.editable:focus {
+    outline: none;
+    border-color: var(--teal);
+    background: rgba(95, 158, 160, 0.1);
+    box-shadow: 0 0 0 3px rgba(95, 158, 160, 0.1);
+}
+
+.item{
+    margin-bottom:15px;
+}
+
+.contact{
+    line-height:1.8;
+}
+
+@media print{
+
+    body{
+        background:white;
+        padding:0;
+    }
+
+    .header-top {
+        display: none;
+    }
+
+    .toolbar{
+        display:none;
+    }
+
+    .cv{
+        box-shadow:none;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .header {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%) !important;
+    }
+
+    .header,
+    .header-info,
+    .name,
+    .role{
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        color:#ffffff !important;
+    }
+
+    .sidebar,
+    .sidebar *{
+        color:#111111 !important;
+        background: #f5f7fa !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .section h2{
+        color: var(--primary) !important;
+        border-color: var(--teal) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 2px solid var(--border);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header-top">
+    <div class="logo-container">
+        <img src='logo_omnia.png' class="logo"></div>
+    <div class="header-text">
+        <h1>CV Builder Europeo</h1>
+        <p><strong>Omnia Solida</strong> - Servizi alla Persona</p>
+        <p class="service-desc">
+            Crea il tuo Curriculum Vitae Europeo in pochi minuti con il nostro strumento gratuito. 
+            Un servizio progettato per aiutarti a presentare al meglio le tue competenze e la tua esperienza 
+            professionale nel formato riconosciuto a livello europeo.
+        </p>
+    </div>
+</div>
+
+<div class="toolbar">
+    <button onclick="window.print()">
+        📥 Salva / Stampa PDF
+    </button>
+    <label style="cursor:pointer; background: var(--primary); color: white; padding: 12px 20px; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; display: inline-block;">
+        🖼️ Carica Foto
+        <input type="file" id="photoInput" accept="image/*" style="display: none;">
+    </label>
+</div>
+
+<div class="cv">
+
+    <div class="header">
+
+        <div class="photo">
+            <img id="profilePhoto"
+            src="https://via.placeholder.com/150x180">
+        </div>
+
+        <div class="header-info">
+
+            <div class="name editable"
+                 contenteditable="true">
+                 Nome Cognome
+            </div>
+
+            <div class="role editable"
+                 contenteditable="true">
+                 Frontend Consultant
+            </div>
+
+            <div class="role editable"
+                 contenteditable="true">
+                 Data di nascita: 01/01/1990 e Luogo di nascita: Milano, Italia
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <div class="sidebar">
+
+            <div class="section">
+
+                <h2>Contatti</h2>
+
+                <div class="contact editable"
+                     contenteditable="true">
+                    Email<br>
+                    Telefono<br>
+                    Milano, Italia<br>
+                    LinkedIn
+                </div>
+
+            </div>
+
+            <div class="section">
+
+                <h2>Competenze Patentini e Patenti</h2>
+
+                <div class="editable"
+                     contenteditable="true">
+                    JavaScript<br>
+                    Node.js<br>
+                    HTML<br>
+                    CSS<br>
+                    MySQL
+                </div>
+
+            </div>
+
+            <div class="section">
+
+                <h2>Lingue</h2>
+
+                <div class="editable"
+                     contenteditable="true">
+                    Italiano - Madrelingua<br>
+                    Inglese - B2
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="main">
+
+            <div class="section">
+
+                <h2>Profilo Professionale</h2>
+
+                <div class="editable"
+                     contenteditable="true">
+
+                    Inserisci qui una breve descrizione
+                    professionale.
+
+                </div>
+
+            </div>
+
+            <div class="section">
+
+                <h2>Esperienza Lavorativa</h2>
+
+                <div class="editable"
+                     contenteditable="true">
+
+                    <strong>Frontend Consultant</strong><br>
+                    Azienda - Periodo<br><br>
+
+                    Descrizione attività.
+
+                </div>
+
+            </div>
+
+            <div class="section">
+
+                <h2>Istruzione</h2>
+
+                <div class="editable"
+                     contenteditable="true">
+
+                    Titolo di Studio<br>
+                    Istituto<br>
+                    Anno
+
+                </div>
+
+            </div>
+
+            <div class="section">
+
+                <h2>Certificazioni</h2>
+
+                <div class="editable"
+                     contenteditable="true">
+
+                    Inserisci certificazioni.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document
+.getElementById("photoInput")
+.addEventListener("change", function(e){
+
+    const file = e.target.files[0];
+
+    if(!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(event){
+
+        document
+        .getElementById("profilePhoto")
+        .src = event.target.result;
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+</script>
+
+</body>
+</html>
