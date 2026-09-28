@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CV Builder Europeo</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#eef2f5;
+    padding:40px;
+}
+
+.toolbar{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+button{
+    background:#1e3a5f;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.cv{
+    max-width:1000px;
+    margin:auto;
+    background:white;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+    min-height:1200px;
+}
+
+.header{
+    display:flex;
+    background:#1e3a5f;
+    color:white;
+    padding:30px;
+}
+
+.photo{
+    width:150px;
+    height:180px;
+    border:3px solid white;
+    overflow:hidden;
+    background:#ddd;
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.header-info{
+    margin-left:30px;
+    flex:1;
+    color:white;
+}
+
+.name{
+    font-size:36px;
+    font-weight:bold;
+    margin-bottom:10px;
+    color:white;
+    opacity:1;
+}
+
+.role{
+    font-size:20px;
+    opacity:1;
+    color:white;
+}
+
+.content{
+    display:grid;
+    grid-template-columns:300px 1fr;
+}
+
+.sidebar{
+    background:#f5f7fa;
+    padding:30px;
+}
+
+.main{
+    padding:30px;
+}
+
+.section{
+    margin-bottom:30px;
+}
+
+.section h2{
+    color:#1e3a5f;
+    margin-bottom:10px;
+    border-bottom:2px solid #d9e1ea;
+    padding-bottom:5px;
+}
+
+.editable{
+    min-height:25px;
+    outline:none;
+}
+
+.item{
+    margin-bottom:15px;
+}
+
+.contact{
+    line-height:1.8;
+}
+
+@media print{
+
+    body{
+        background:white;
+        padding:0;
+    }
+
+    .toolbar{
+        display:none;
+    }
+
+    .cv{
+        box-shadow:none;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .header,
+    .header-info,
+    .name,
+    .role{
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        opacity:1;
+        color:#ffffff !important;
+        background-color: transparent;
+    }
+
+    .sidebar,
+    .sidebar *{
+        color:#111111 !important;
+    }
+
+    .section h2{
+        color:#1e3a5f !important;
+    }
+
+    .header{
+        background:#1e3a5f !important;
+    }
+
+    .sidebar{
+        background:#f5f7fa !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="toolbar">
+    <button onclick="window.print()">
+        Salva / Stampa PDF
+    </button>
+
+    <input type="file" id="photoInput" accept="image/*">
+</div>
+
+<div class="cv">
+
+    <div class="header">
+
+        <div class="photo">
+            <img id="profilePhoto"
+            src="https://via.placeholder.com/150x180">
+        </div>
+
+        <div class="header-info">
+
+            <div class="name editable"
+                 contenteditable="true">
+                 Nome Cognome
+            </div>
+
+            <div class="role editable"
+                 contenteditable="true">
+                 Frontend Consultant
+            </div>
+
+            <div class="role editable"
+                 contenteditable="true">
+                 Data di nascita: 01/01/1990 e Luogo di nascita: Milano, Italia
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <div class="sidebar">
+
+            <div class="section">
+
+                <h2>Contatti</h2>
+
+                <div class="contact editable"
+                     contenteditable="true">
+                    Email<br>
+                    Telefono<br>
+                    Milano, Italia<br>
+                    LinkedIn
+                </div>
+
+            </div>
+
+            <div class="section">
+
+                <h2>Competenze Patentini e Patenti</h2>
+
+                <div class="editable"
+                     contenteditable="true">
+                    JavaScript<br>
+                    Node.js<br>
+                    HTML<br>
+                    CSS<br>
+                    MySQL
+                </div>
+
+            </div>
+
+            <div class="section">
+
+                <h2>Lingue</h2>
+
+                <div class="editable"
+                     contenteditable="true">
+                    Italiano - Madrelingua<br>
+                    Inglese - B2
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="main">
+
+            <div class="section">
+
+                <h2>Profilo Professionale</h2>
+
+                <div class="editable"
+                     contenteditable="true">
+
+                    Inserisci qui una breve descrizione
+                    professionale.
+
+                </div>
+
+            </div>
+
+            <div class="section">
+
+                <h2>Esperienza Lavorativa</h2>
+
+                <div class="editable"
+                     contenteditable="true">
+
+                    <strong>Frontend Consultant</strong><br>
+                    Azienda - Periodo<br><br>
+
+                    Descrizione attività.
+
+                </div>
+
+            </div>
+
+            <div class="section">
+
+                <h2>Istruzione</h2>
+
+                <div class="editable"
+                     contenteditable="true">
+
+                    Titolo di Studio<br>
+                    Istituto<br>
+                    Anno
+
+                </div>
+
+            </div>
+
+            <div class="section">
+
+                <h2>Certificazioni</h2>
+
+                <div class="editable"
+                     contenteditable="true">
+
+                    Inserisci certificazioni.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document
+.getElementById("photoInput")
+.addEventListener("change", function(e){
+
+    const file = e.target.files[0];
+
+    if(!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(event){
+
+        document
+        .getElementById("profilePhoto")
+        .src = event.target.result;
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+</script>
+
+</body>
+</html>
