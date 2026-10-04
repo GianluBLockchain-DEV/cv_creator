@@ -15,7 +15,7 @@ Contatti
 Per ulteriori informazioni o supporto, puoi contattare:
 
 Dev: Gianluca Uva
-Omnia Solida SRLS x L'associazione Linea Punto Verde e il contributo 
+Omnia Solida SRLS
 Telefono: [+39 370-3076710]
 Email: [gianluca360hc@gmail.com]
 Bereguardo Via S. Antonio 8 (Pavia)
